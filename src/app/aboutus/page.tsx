@@ -11,9 +11,9 @@ import React from 'react';
 function About() {
   return (
     <>
-      <div className="grid lg:grid-cols-2 grid-cols-1 ">
-        <div className="lg:p-72 md:p-32">
-          <p className="md:text-5xl text-2xl font-bold">
+      <div className="grid grid-cols-1 mt-32 ">
+        <div className=" px-20 sm:px-20 md:px-20 lg:px-44">
+          <p className="md:text-5xl text-3xl font-bold text-center">
             Streamlining the volunteering process,{' '}
             <p className=" inline bg-gradient-to-r from-indigo-400 via-indigo-600  to-blue-500 bg-clip-text text-transparent">
               one user at a time...
@@ -29,12 +29,12 @@ function About() {
         Our Mission
       </div>
 
-      <div className="text-center text-md font-bold text-gray-500 md:px-20 lg:px-96 px-5 mb-10">
+      <div className="text-center text-md font-bold text-gray-500 md:px-20 lg:px-96 px-5 mb-32">
         Our mission at{' '}
         <p
           className={`text-lg inline font-semibold ${kalam.className} text-indigo-500`}
         >
-          Opportunity{' '}
+          Volunex{' '}
         </p>
         is to support volunteers and organizations in their efforts to make a
         positive impact on society. We believe that documenting volunteer work

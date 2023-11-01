@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 import React, { useEffect, useState } from 'react';
 import { AuthContextType, useAuth } from '@/auth/auth_context';
@@ -17,15 +18,15 @@ import {
 } from '@/form_schemas/volunteer_app_formschema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useOpportunityService } from '@/opportunity/oppurtunity_service';
-
+import Link from 'next/link';
 
 function hourSum(volunteeredEvents: any) {
   let sum = 0;
-  
+
   volunteeredEvents.forEach((i: any) => {
-    console.log(i)
-    sum = sum + i.hoursVolunteered
-  })
+    console.log(i);
+    sum = sum + i.hoursVolunteered;
+  });
   return sum;
 }
 
@@ -40,29 +41,28 @@ function Page({ auth }: { auth: AuthContextType }) {
     resolver: zodResolver(volunteerSchema),
   });
 
-  const [hours, setHours] = useState(0)
+  const [hours, setHours] = useState(0);
 
   useEffect(() => {
     setHours(0);
     auth.user?.volunteeredOpportunities.map((i: any, e: any) => {
       console.log(i.hoursVolunteered);
       setHours(hrs => hrs + i.hoursVolunteered);
-    })
-  }, [auth.user])
+    });
+  }, [auth.user]);
 
   const onSubmit: SubmitHandler<VolunteerFormSchema> = data => {
     console.log(data, errors);
   };
 
-
   return (
     <>
       <div className="text-center  mt-32">
-        <p className="lg:text-4xl text-4xl font-extrabold t">Hey {auth.user?.firstName},</p>
+        <p className="lg:text-4xl text-4xl font-extrabold t">
+          Hey {auth.user?.firstName},
+        </p>
         <p className="text-2xl font-bold hidden sm:block">
-          you have {
-            hours
-          } hours of volunteering logged..
+          you have {hours} hours of volunteering logged..
         </p>
       </div>
 
@@ -89,21 +89,35 @@ function Page({ auth }: { auth: AuthContextType }) {
             {auth.user?.volunteeredOpportunities.map((i: any, e: any) => {
               return <TableView key={e} refer={i} />;
             })}
-            
           </tbody>
         </table>
       </div>
+
+      {hours == 0 ? (
+        <>
+          <p className="text-lg font-bold text-center mt-20 mb-5">
+            Looks like you have no volunteer hours logged, visit{' '}
+            <Link className="underline italic"href={'/app/opportunities'}>the find page</Link>
+          </p>
+          <div className="flex justify-center items-center ">
+            <img
+              src="/dashboard.svg"
+              alt="dash image"
+              className=" w-[200px] h-[200 px]"
+            />
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
     </>
   );
 }
 
 const TableView = ({ refer }: { refer: any }) => {
+  const DOS = refer.dateOfService.toDate();
 
-
-  const DOS = refer.dateOfService.toDate()
-  
   const date = `${DOS.getMonth()}/${DOS.getUTCDate()}/${DOS.getUTCFullYear()}`;
-
 
   const [opportunity, setOpportunity] = useState<DocumentData | undefined>();
 

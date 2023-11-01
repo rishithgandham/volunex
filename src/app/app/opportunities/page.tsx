@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/alt-text */
 'use client';
@@ -26,6 +27,7 @@ import { Dialog } from '@headlessui/react';
 import { string, z } from 'zod';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
+import Link from 'next/link';
 
 function Page({ auth }: { auth: AuthContextType }) {
   const { fetchOpportunities, getRequestUser } = useOpportunityService();
@@ -52,9 +54,21 @@ function Page({ auth }: { auth: AuthContextType }) {
 
   return (
     <>
-      <div className="flex-col  items-center justify-center h-10 text-center  m-10 p-10 mb-20 ">
+      <div className=" h-10 text-center  m-10 p-10 sm:mb-20 mb-40 ">
         <p className="lg:text-4xl text-2xl font-extrabold">
           Find Volunteering Opportunities
+        </p>
+        <p className="text-gray-500 text-sm font-bold">
+          Uncover a plethora of volunteering opportunities by searching our
+          database for events that suit you and your location and time
+          constraints, or{' '}
+          <Link
+            href="/app/opprtunities/myopportunities"
+            className="underline italic"
+          >
+            {' '}
+            create an event yourself{' '}
+          </Link>
         </p>
       </div>
 
@@ -89,9 +103,8 @@ function Page({ auth }: { auth: AuthContextType }) {
             return;
           }
           return (
-            <>
-              <a
-                key={i}
+              <div
+                key={e.id}
                 className="group relative border border-black bg-white rounded-xl text-left shadow-xl hover:scale-[102%] transition-all ease-in-out"
               >
                 <div className="mx-4 my-4 ">
@@ -103,7 +116,7 @@ function Page({ auth }: { auth: AuthContextType }) {
                     {event.eventDescription}
                   </p>
                   <p className="text-md font-extrabold mb-2 flex items-center">
-                    Dates: 
+                    Dates:
                   </p>
                   <p className="text-xs font-extrabold text-slate-600 mb-2 flex items-center">
                     Date: {date}
@@ -115,15 +128,20 @@ function Page({ auth }: { auth: AuthContextType }) {
                     End time: {endTime}
                   </p>
                   <p className="text-md font-extrabold mb-2 flex items-center">
-                    Contact Information: 
+                    Contact Information:
                   </p>
                   <p className="text-xs font-extrabold text-slate-600 mb-2 flex items-center">
-                    Phone/Email: {event.contactNumber}/<a href={`mailto:${event.contactEmail}`}>{event.contactEmail}</a>
-                    
+                    Phone: {event.contactNumber}
                   </p>
+                  <p className="text-xs font-extrabold text-slate-600 mb-2 flex items-center">
+                    Email:
+                    <Link href={`mailto:${event.contactEmail}`}>
+                      {" " + event.contactEmail}
+                    </Link>
+                  </p>
+
                   <p className="text-xs font-extrabold text-slate-600 mb-2 flex items-center">
                     Adress: {event.eventAdress}
-                    
                   </p>
                 </div>
 
@@ -139,8 +157,7 @@ function Page({ auth }: { auth: AuthContextType }) {
                 >
                   Add +
                 </button>
-              </a>
-            </>
+              </div>
           );
         })}
 
@@ -163,8 +180,7 @@ const RequestCreditModal = ({
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-
-  const {fetchAndSetAppUser} = useAuth()
+  const { fetchAndSetAppUser } = useAuth();
   const {
     register,
     handleSubmit,

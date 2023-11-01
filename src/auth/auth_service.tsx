@@ -2,6 +2,7 @@ import { db } from '@/firebase/firebase';
 import { FirebaseApp, getApp } from 'firebase/app';
 import {
   Auth,
+  getAdditionalUserInfo,
   getAuth,
   getRedirectResult,
   onAuthStateChanged,
@@ -28,21 +29,23 @@ class AuthService {
   }
 
   async loginWithGoogle() {
-    await signInWithRedirect(this.auth, new GoogleAuthProvider());
-    getRedirectResult(this.auth)
-      .then(user => {
-        return user?.user;
-      })
+    const result = await signInWithPopup(this.auth, new GoogleAuthProvider())
+      
       .catch(err => {
         console.log(err);
         return undefined;
       });
+
+      const additionalInfo = getAdditionalUserInfo(result!)
+      
+      return additionalInfo?.isNewUser
   }
 
   async getAppUser() {
     console.log(this.auth);
     const docRef = doc(db, 'users', this.auth.currentUser?.uid as string);
-    const docSnap = await getDoc(docRef)
+    let docSnap
+    = await getDoc(docRef)
       .then(doc => {
         console.log(doc);
         return doc.data();
@@ -51,6 +54,11 @@ class AuthService {
         console.log(err);
         return undefined;
       });
+    
+   
+    
+      
+
     console.log(docSnap);
     return docSnap;
   }

@@ -2,6 +2,7 @@
 'use client';
 import { withPublic } from '@/auth/auth_route';
 import { Satisfy, Kalam } from 'next/font/google';
+import Link from 'next/link';
 const open_sans = Kalam({ subsets: ['latin'], weight: '700' });
 
 function Home() {
@@ -25,7 +26,7 @@ function Home() {
           </h1>
           <p className="mt-6 text-lg font-bold leading-8 text-black">
           <p className="inline font-extrabold text-xl italic __className_7e445c text-indigo-500">
-              Opportunity,{' '}
+              Volunex,{' '}
             </p>
             The ultimate resource to steamline your{' '}
             <p className="inline font-extrabold text-xl italic __className_7e445c text-indigo-500">
@@ -35,13 +36,13 @@ function Home() {
           </p>
 
           <div className="mt-10 flex items-center justify-center gap-x-6">
-            <a
+            <Link
               href="/auth/login"
               className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm  font-semibold text-white shadow-sm hover:bg-indigo-500 hover:scale-110 transition-all ease-in-out"
             >
               Get started
-            </a>
-            <a
+            </Link>
+            <Link
               href="/aboutus"
               className="text-sm group flex items-center font-semibold leading-6 text-gray-900"
             >
@@ -49,7 +50,7 @@ function Home() {
               <p className="group-hover:translate-x-3 transition-all ease-in-out ml-2">
                 →
               </p>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -163,8 +164,8 @@ function Home() {
       </section>
 
       <div className="flex justify-center items-center">
-        <div className="grid lg:grid-cols-2 grid-cols-1 m-5 mb-20 xl:w-2/3 w-full">
-          <div className="md:px-32 py-32  text-center lg:text-left">
+        <div className="grid  grid-cols-1 m-5 mb-20 xl:w-2/3 w-full">
+          <div className="lg:px-32 py-32  text-center lg:text-left">
             <h2 className="text-3xl font-bold tracking-tight  mb-10 sm:text-4xl bg-gradient-to-r from-indigo-400 via-indigo-600  to-blue-500 bg-clip-text text-transparent">
               Uncover Meaningful Opportunities, Capture Your Impact, Share Your
               Volunteering Story.
@@ -176,13 +177,13 @@ function Home() {
               </p>
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
-              <a
+              <Link
                 href="#"
                 className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-600 hover:scale-110 transition-all ease-in-out "
               >
                 Get started
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/aboutus"
                 className="text-sm group flex items-center font-semibold leading-6 text-gray-900"
               >
@@ -190,7 +191,7 @@ function Home() {
                 <p className="group-hover:translate-x-3 transition-all ease-in-out ml-2">
                   →
                 </p>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="flex justify-center items-center mt-10">

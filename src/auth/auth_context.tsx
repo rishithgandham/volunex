@@ -6,19 +6,21 @@ import authService from './auth_service';
 import {
   User,
   UserCredential,
+  getAdditionalUserInfo,
   getAuth,
   onAuthStateChanged,
 } from 'firebase/auth';
 import { auth } from './auth_service';
 import { useRouter } from 'next/navigation';
 import { DocumentData } from 'firebase/firestore';
+import { MutatingDots } from 'react-loader-spinner';
 
 export type AuthContextType = {
   user: DocumentData | undefined;
   providerUser: User | null | undefined;
   loginWithGoogle: () => Promise<void>;
   logOut: () => Promise<void>;
-  fetchAndSetAppUser: () => Promise<void>
+  fetchAndSetAppUser: () => Promise<void>;
 };
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
@@ -44,8 +46,8 @@ export default function AuthProvider({ children }: any) {
   useEffect(() => {
     if (providerUser) {
       fetchAndSetAppUser();
-    } 
-  }, [providerUser])
+    }
+  }, [providerUser]);
 
   const fetchAndSetAppUser = async () => {
     // await new Promise(res => setTimeout(res, 5000));
@@ -55,8 +57,17 @@ export default function AuthProvider({ children }: any) {
 
   const loginWithGoogle = async () => {
     console.log('google log in');
-    await authService.loginWithGoogle();
-    router.push('/app/dashboard')
+    let newUser;
+    const res = await authService.loginWithGoogle();
+    console.log(res);
+    router.push('/app/dashboard');
+    if (res) {
+      await new Promise(res =>
+        setTimeout(res => {
+          window.location.reload();
+        }, 2500)
+      );
+    }
   };
 
   const logOut = async () => {
@@ -64,22 +75,49 @@ export default function AuthProvider({ children }: any) {
     await authService.logOut();
     router.push('/auth/login');
   };
-  
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <>
       {!loading ? (
         <AuthContext.Provider
-          value={{ providerUser, user, loginWithGoogle, logOut, fetchAndSetAppUser }}
+          value={{
+            providerUser,
+            user,
+            loginWithGoogle,
+            logOut,
+            fetchAndSetAppUser,
+          }}
         >
           {children}
         </AuthContext.Provider>
       ) : (
-        <>Loading</>
+        <>
+          <Loader />
+        </>
       )}
     </>
   );
 }
+
+const Loader = () => {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100vw',
+        height: '100vh',
+      }}
+    >
+      <div className="loader"></div>
+    </div>
+  );
+};
 
 export function useAuth() {
   return useContext(AuthContext);

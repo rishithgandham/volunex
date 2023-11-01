@@ -21,12 +21,12 @@ export function PublicNavbar() {
     <>
       <nav className="h-14 flex justify-between items-center md:px-10 px-5">
         <div className="w-1/6 ">
-          <a
+          <Link
             href="/"
             className={`text-lg font-semibold ${kalam.className} text-indigo-500`}
           >
             Volunex
-          </a>
+          </Link>
         </div>
         <div className="flex p-2 items-center justify-end w-5/6 bg-transparent ">
           <NavbarLink href="/auth/login" name="Sign In" />
@@ -52,12 +52,12 @@ export function PrivateNavbar() {
           <>
             <div className="h-14 flex justify-between items-center px-10">
               <div className="w-1/3 hidden md:block">
-                <a
+                <Link
                   href="/app/"
                   className={`text-lg font-semibold ${kalam.className} text-indigo-500`}
                 >
                   Volunex
-                </a>
+                </Link>
               </div>
 
               <div className=" hidden p-2 items-center justify-center w-1/3 md:flex bg-transparent">
@@ -126,80 +126,15 @@ function NavbarLink({ icon, href, name }: NavigationLink) {
 
 function DisclosureLink({ icon, href, name }: NavigationLink) {
   return (
-    <Disclosure.Button
-      href={href}
-      as="a"
+    <Link
       className={
-        'flex justify-between items-center rounded-md px-3 py-2 text-base font-medium hover:bg-slate-100'
+        'flex justify-between text-sm items-center rounded-md px-3 py-2  font-medium bg-transparent hover:bg-slate-100'
       }
+      href={href}
     >
-      <p className="text-sm">{name}</p>
-    </Disclosure.Button>
+      {name}
+    </Link>
   );
 }
 
-const LogoSvg = ({ w, h }: any) => {
-  return (
-    <svg
-      width={w}
-      height={h}
-      viewBox="0 0 278 326"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M2 94L2 243"
-        stroke="#A92966"
-        stroke-width="4"
-        stroke-linecap="round"
-      />
-      <path
-        d="M2.07867 242.855L100.079 323.855"
-        stroke="#A92966"
-        stroke-width="4"
-        stroke-linecap="round"
-      />
-      <path
-        d="M116 9L2 94"
-        stroke="#A92966"
-        stroke-width="4"
-        stroke-linecap="round"
-      />
-      <path
-        d="M157 2L43 87"
-        stroke="#A92966"
-        stroke-width="4"
-        stroke-linecap="round"
-      />
-      <path
-        d="M215 233L100 324"
-        stroke="#A92966"
-        stroke-width="4"
-        stroke-linecap="round"
-      />
-      <path
-        d="M272.642 87.0241L158 2"
-        stroke="#A92966"
-        stroke-width="4"
-        stroke-linecap="round"
-      />
-      <path
-        d="M275.044 226.966L156.044 320.966"
-        stroke="#A92966"
-        stroke-width="4"
-        stroke-linecap="round"
-      />
-      <path
-        d="M274.805 87.3966L275.805 225.397"
-        stroke="#A92966"
-        stroke-width="4"
-        stroke-linecap="round"
-      />
-      <path
-        d="M214.805 163.397C214.805 204.229 181.039 237.397 139.305 237.397C97.57 237.397 63.8045 204.229 63.8045 163.397C63.8045 122.564 97.57 89.3966 139.305 89.3966C181.039 89.3966 214.805 122.564 214.805 163.397Z"
-        stroke="black"
-        stroke-width="4"
-      />
-    </svg>
-  );
-};
+

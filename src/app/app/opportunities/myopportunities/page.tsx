@@ -12,6 +12,7 @@ import { SubmitHandler, UseFormRegister, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Dialog } from '@headlessui/react';
 import CreateModal from '@/component/CreateOpportunity';
+import Link from 'next/link';
 
 
 
@@ -83,9 +84,9 @@ export default withProtected(MyOpportunities);
 
 function OpportunityView({ dateTime, event, id }: any) {
   return (
-    <li className="grid relative md:grid-cols-2 grid-cols-1 mb-10 rounded-xl border-black border">
+    <Link href={`/app/opportunities/myopportunities/${id}`} className="grid relative md:grid-cols-2 grid-cols-1 mb-10 rounded-xl border-black border hover:scale-110 hover:brightness-75 transition-all ease-in-out">
       <div className="p-5 h-full ">
-        <a className="text-lg font-bold mb-2" href={`/app/opportunities/myopportunities/${id}`}>{event.eventName}</a>
+        <p className="text-lg font-bold mb-2" >{event.eventName}</p>
         <p className="text-xs font-bold text-slate-600">
           {event.eventDescription.slice(0, 200).concat("...")}
         </p>
@@ -96,13 +97,13 @@ function OpportunityView({ dateTime, event, id }: any) {
           {`${event.eventAdress}, ${event.eventCity}, ${event.eventState}`}
         </p>
       </div>
-      <div className="absolute  bottom-0.5 right-3.5">
+      {/* <div className="absolute  bottom-0.5 right-3.5">
         <button className="w-7 h-7 flex justify-center items-center bg-indigo-500 text-white text-xs rounded-md m-1 hover:scale-110 hover:bg-indigo-500 transition-all ease-in-out">
           <ion-icon name="pencil-outline"></ion-icon>
         </button>
         
-        {/* <div className='w-7 h-7 flex justify-center items-center bg-indigo-500 text-white text-xs rounded-md m-1'><ion-icon name="eye-outline"></ion-icon></div> */}
-      </div>
-    </li>
+        
+      </div> */}
+    </Link>
   );
 }

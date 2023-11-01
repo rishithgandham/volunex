@@ -1,18 +1,15 @@
-
-
 //Utility
 import Image from 'next/image';
 import { Fragment, useState } from 'react';
 
-
 export function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(' ');
-  }
+  return classes.filter(Boolean).join(' ');
+}
 
 //Style
 import { Menu, Transition } from '@headlessui/react';
 import { useAuth } from '@/auth/auth_context';
-
+import Link from 'next/link';
 
 //links in the profile dropdown
 
@@ -20,17 +17,13 @@ import { useAuth } from '@/auth/auth_context';
 
 interface ProfileDropdownItem {
   name: string;
-  link?: string;
-  color?: string;
+  link: string;
   icon: JSX.Element;
-  onClick?: () => any;
 }
 
+export default function Profile() {
+  const { logOut, user, providerUser } = useAuth();
 
-export default function Profile( ){
-  const { logOut, user } = useAuth();
-
-  
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -64,15 +57,41 @@ export default function Profile( ){
 
             <hr />
 
-              <DropdownMenuItem link='/app/opportunities/myopportunities' name="My Events" icon={<ion-icon name="albums-outline"></ion-icon>}/>
-              <DropdownMenuItem link='/app/opportunities/dashboard' name="Dashboard" icon={<ion-icon name="bar-chart-outline"></ion-icon>}/>
-              <DropdownMenuItem link='/app/portfolio/' name="My Portfolio" icon={<ion-icon name="person-outline"></ion-icon>}/>
+            <DropdownMenuItem
+              link="/app/opportunities/myopportunities"
+              name="My Events"
+              icon={<ion-icon name="albums-outline"></ion-icon>}
+            />
+            <DropdownMenuItem
+              link="/app/opportunities/dashboard"
+              name="Dashboard"
+              icon={<ion-icon name="bar-chart-outline"></ion-icon>}
+            />
+            <DropdownMenuItem
+              link="/app/portfolio/"
+              name="My Portfolio"
+              icon={<ion-icon name="person-outline"></ion-icon>}
+            />
 
-              
-              <hr/>
-              <DropdownMenuItem onClick={logOut} color="text-red-500"name="Log Out" icon={<ion-icon name="exit-outline"></ion-icon>}/>
-          </div>        
-          </Menu.Items>
+            <hr />
+            <Menu.Item>
+              {({ active }) => (
+                <button
+                  onClick={() => {
+                    logOut();
+                  }}
+                  className={classNames(
+                    active ? 'bg-gray-100' : 'bg-white',
+                    ` w-full px-4 py-2 text-xs font-semibold text-red-500 flex justify-between items-center`
+                  )}
+                >
+                  <p>Log Out</p>
+                  <ion-icon name="log-out-outline"></ion-icon>
+                </button>
+              )}
+            </Menu.Item>
+          </div>
+        </Menu.Items>
       </Transition>
     </Menu>
   );
@@ -80,26 +99,22 @@ export default function Profile( ){
 
 function DropdownMenuItem({
   name,
-  color,
   link,
   icon,
-  onClick
 }: ProfileDropdownItem) {
   return (
     <Menu.Item>
       {({ active }) => (
-        <a
+        <Link
           href={link}
-          onClick={onClick}
           className={classNames(
             active ? 'bg-gray-100' : 'bg-white',
-            `block px-4 py-2 text-xs font-semibold ${color} flex justify-between items-center`
+            `w-full px-4 py-2 text-xs font-semibold flex justify-between items-center`
           )}
         >
           <p>{name}</p>
           {icon}
-
-        </a>
+        </Link>
       )}
     </Menu.Item>
   );

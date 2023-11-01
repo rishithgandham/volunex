@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
 import { withProtected } from '@/auth/auth_route';
@@ -16,16 +17,20 @@ function Page({ params }: { params: { id: string } }) {
     const opp = await getOpportunity(params.id);
     console.log('hello')
     setOpportunity(opp.data());
+    setOpportunity(opp.data());
   }
 
   useEffect(() => {
     fetchOpportunity();
   }, []);
-  // useEffect(() => {
 
-  //   console.log(opportunity?.eventVolunteers.entries());
+  useEffect(() => {
+    opportunity?.eventVolunteers.map((i: any) => {
+      setLen(len => len + 1 )
+    })
+    
 
-  // }, [opportunity]);
+  }, [opportunity]);
 
   return (
     <>
@@ -54,13 +59,6 @@ function Page({ params }: { params: { id: string } }) {
           })}
         </ul>
       </div>
-      {len == 0 ? (
-        <p className="text-md mt-4 font-bold text-center">
-          No Requests For Credits
-        </p>
-      ) : (
-        <></>
-      )}
     </>
   );
 }
@@ -105,7 +103,7 @@ function RequestUserListItem({ request, userId, id, getMyOpportunities }: any) {
           ) : (
             <button
               onClick={acceptRequest}
-              className="px-4 py-2 mt-2 text-xs font-semibold text-white rounded-xl bg-indigo-500"
+              className="px-4 py-2 mt-2 text-xs font-semibold text-white rounded-xl bg-indigo-500" 
             >
               <ion-icon name="checkmark-outline"></ion-icon>
             </button>
