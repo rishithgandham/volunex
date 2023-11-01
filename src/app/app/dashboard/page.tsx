@@ -43,7 +43,7 @@ function Page({ auth }: { auth: AuthContextType }) {
   const [hours, setHours] = useState(0)
 
   useEffect(() => {
-
+    setHours(0);
     auth.user?.volunteeredOpportunities.map((i: any, e: any) => {
       console.log(i.hoursVolunteered);
       setHours(hrs => hrs + i.hoursVolunteered);

@@ -55,7 +55,7 @@ export default function AuthProvider({ children }: any) {
 
   const loginWithGoogle = async () => {
     console.log('google log in');
-    authService.loginWithGoogle();
+    await authService.loginWithGoogle();
     router.push('/app/dashboard')
   };
 
