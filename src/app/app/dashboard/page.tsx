@@ -57,13 +57,39 @@ function Page({ auth }: { auth: AuthContextType }) {
 
   return (
     <>
-      <div className="text-center  mt-32">
+      <div className="text-center  mt-32 px-5">
         <p className="lg:text-4xl text-4xl font-extrabold t">
           Hey {auth.user?.firstName},
         </p>
         <p className="text-2xl font-bold ">
           you have {hours} hours of volunteering logged..
         </p>
+      </div>
+
+
+      <div className="grid md:grid-cols-3 grid-cols-1 my-20 md:mx-10 mx-5 gap-x-6 gap-y-4">
+        <Link href='/app/opportunities/myopportunities' className=" flex-col items-center border rounded-xl border-black p-5 hover:scale-105 ">
+          <p className="text-center font-bold text-xl">
+            View Your Events
+          </p>
+          <p className='font-semibold text-xs text-center text-gray-600'>Monitor all your events</p>
+          <p className="w-full flex justify-center text-3xl my-5"><ion-icon name="eye-outline"></ion-icon></p>
+        </Link>
+        <Link href="/app/opportunities/myopportunities" className=" flex-col items-center border rounded-xl border-black p-5 hover:scale-105 ">
+          <p className="text-center font-bold text-xl">
+            Create an Event
+          </p>
+          <p className='font-semibold text-xs text-center text-gray-600'>Create your own volunteering opportunity</p>
+          <p className="w-full flex justify-center text-3xl my-5"><ion-icon name="add-circle-outline"></ion-icon></p>
+        </Link>
+        <Link href='/app/opportunities' className=" flex-col items-center border rounded-xl border-black p-5 hover:scale-105 ">
+          <p className="text-center font-bold text-xl">
+            Find
+          </p>
+          <p className='font-semibold text-xs text-center text-gray-600'>View events to add to your portfolio</p>
+          <p className="w-full flex justify-center text-3xl my-5"><ion-icon name="search-circle-outline"></ion-icon></p>
+        </Link>
+        
       </div>
 
       <div className="relative  justify-center md:px-20 mt-14 hidden sm:flex">
@@ -99,7 +125,7 @@ function Page({ auth }: { auth: AuthContextType }) {
             Looks like you have no volunteer hours logged, visit{' '}
             <Link className="underline italic"href={'/app/opportunities'}>the find page</Link>
           </p>
-          <div className="flex justify-center items-center ">
+          <div className="flex justify-center items-center mb-20">
             <img
               src="/dashboard.svg"
               alt="dash image"

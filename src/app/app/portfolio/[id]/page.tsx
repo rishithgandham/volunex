@@ -2,7 +2,7 @@
 'use client';
 
 import { useAuth } from '@/auth/auth_context';
-import { withProtected } from '@/auth/auth_route';
+import { withProtected, withPublic } from '@/auth/auth_route';
 import { useOpportunityService } from '@/opportunity/oppurtunity_service';
 import { DocumentData, DocumentSnapshot } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
@@ -84,7 +84,7 @@ const PortfolioView = ({ refer }: { refer: any }) => {
           </p>
 
           <p className="text-md font-bold mt-4">Reflection:</p>
-          <p className="text-xs font-bold text-slate-600">
+          <p className="text-xs font-bold text-slate-600 break-words">
             {refer?.volunteerReflection}
           </p>
           <p className="text-xs font-bold text-slate-600 mt-3 ">
@@ -106,4 +106,4 @@ const PortfolioView = ({ refer }: { refer: any }) => {
   );
 };
 
-export default withProtected(EntryViewPage);
+export default withPublic(EntryViewPage);

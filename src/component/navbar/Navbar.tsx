@@ -53,7 +53,7 @@ export function PrivateNavbar() {
             <div className="h-14 flex justify-between items-center px-10">
               <div className="w-1/3 hidden md:block">
                 <Link
-                  href="/app/"
+                  href="/app/dashboard"
                   className={`text-lg font-semibold ${kalam.className} text-indigo-500`}
                 >
                   Volunex

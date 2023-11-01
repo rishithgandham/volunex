@@ -63,7 +63,7 @@ function Page({ auth }: { auth: AuthContextType }) {
           database for events that suit you and your location and time
           constraints, or{' '}
           <Link
-            href="/app/opprtunities/myopportunities"
+            href="/app/opportunities/myopportunities"
             className="underline italic"
           >
             {' '}

@@ -67,8 +67,10 @@ function RequestUserListItem({ request, userId, id, getMyOpportunities }: any) {
   const { getRequestUser, acceptCredit } = useOpportunityService();
 
   const [user, setUser] = useState<any>();
+  const [state, setState] = useState<boolean>(request.validated);
 
   useEffect(() => {
+    console.log(request);
     async function getUser() {
       const user = await getRequestUser(userId);
       setUser(user.data());
