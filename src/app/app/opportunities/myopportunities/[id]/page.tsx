@@ -43,7 +43,7 @@ function Page({ params }: { params: { id: string } }) {
         Requests For Credits: {len}
       </p>
       <div className="flex w-full justify-center">
-        <ul className="lg:w-2/3 md:w-3/4 sm:w-full m-5 rounded-xl border border-black divide-x">
+        <ul className="lg:w-2/3 md:w-3/4 sm:w-full m-5 rounded-xl border border-black divide-x lg:divide-y">
           {opportunity?.eventVolunteers.map((i: any, e: any) => {
             // setLen(len + 1);
 
@@ -82,7 +82,7 @@ function RequestUserListItem({ request, userId, id, getMyOpportunities }: any) {
   }
   return (
     <>
-      <li className="grid lg:grid-cols-2 grid-cols-1 relative    border-b-black lg:divide-x divide-y">
+      <li className="grid lg:grid-cols-2 grid-cols-1 relative    border-b-black border">
         <div className="p-5 ">
           <p className=" font-bold  text-md ">{user?.firstName}</p>
           <p className=" font-bold  text-xs text-slate-600">
@@ -110,9 +110,9 @@ function RequestUserListItem({ request, userId, id, getMyOpportunities }: any) {
             
           )}
         </div>
-        <div className="flex-col justify-center items-center p-5">
+        <div className="flex-col justify-center items-center p-5 break-words">
           <p className=" font-bold  text-md ">Volunteer Reflection</p>
-          <p className="text-[10px] mt-3 font-bold text-slate-600">
+          <p className="text-[10px] mt-3 font-bold text-slate-600 break-words">
             {request?.volunteerReflection}
           </p>
         </div>

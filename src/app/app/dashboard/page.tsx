@@ -61,12 +61,12 @@ function Page({ auth }: { auth: AuthContextType }) {
         <p className="lg:text-4xl text-4xl font-extrabold t">
           Hey {auth.user?.firstName},
         </p>
-        <p className="text-2xl font-bold hidden sm:block">
+        <p className="text-2xl font-bold ">
           you have {hours} hours of volunteering logged..
         </p>
       </div>
 
-      <div className="relative flex justify-center md:px-20 mt-14">
+      <div className="relative  justify-center md:px-20 mt-14 hidden sm:flex">
         <table className="w-1/2  text-sm text-left border-indigo-500 border-2 rounded-xl">
           <thead className="text-xs  uppercase bg-gray-50 ">
             <tr>
@@ -82,7 +82,7 @@ function Page({ auth }: { auth: AuthContextType }) {
               <th scope="col" className="px-6 py-3">
                 Hours
               </th>
-              <th scope="col" className="px-6 py-3"></th>
+              <th scope="col" className="px-6 py-3">Status</th>
             </tr>
           </thead>
           <tbody>
@@ -141,7 +141,7 @@ const TableView = ({ refer }: { refer: any }) => {
         <td className="px-6 py-4">{date}</td>
         {/* <td className="px-6 py-4">{refer.volunteerReflection.slice(0, 5).concat('...')}</td> */}
         <td className="px-6 py-4">{refer.hoursVolunteered}</td>
-        <td className="px-6 py-4 text-right">
+        <td className="px-6 py-4 ">
           {refer.verified ? 'Verified' : 'Pending'}
         </td>
       </tr>

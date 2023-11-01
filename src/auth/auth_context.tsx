@@ -65,7 +65,7 @@ export default function AuthProvider({ children }: any) {
       await new Promise(res =>
         setTimeout(res => {
           window.location.reload();
-        }, 2500)
+        }, 5000)
       );
     }
   };

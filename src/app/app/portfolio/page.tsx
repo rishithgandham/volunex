@@ -97,7 +97,7 @@ const PortfolioView = ({ refer }: { refer: any }) => {
           </p>
 
           <p className="text-md font-bold mt-4">Reflection:</p>
-          <p className="text-xs font-bold text-slate-600">
+          <p className="text-xs font-bold text-slate-600 break-words">
             {refer?.volunteerReflection}
           </p>
           <p className="text-xs font-bold text-slate-600 mt-3 ">
