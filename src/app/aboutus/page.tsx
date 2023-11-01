@@ -38,10 +38,10 @@ function About() {
         </p>
         is to support volunteers and organizations in their efforts to make a
         positive impact on society. We believe that documenting volunteer work
-        is crucial for recognizing and valuing the contributions of individuals
+        is crucial; it recognizes individual contributions to our community
         and maximizing the effectiveness of volunteer programs. Our platform
-        provides a user-friendly and comprehensive solution for volunteers to
-        accurately track their time, record their tasks, and document their
+        provides a user-friendly and comprehensive way for volunteers to
+        track and verify their service hours, find volunteer opportunities, and document their
         experiences.
       </div>
     </>

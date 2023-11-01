@@ -33,12 +33,12 @@ function Page({ auth }: { auth: AuthContextType }) {
             <ion-icon name="share-outline"></ion-icon>
           </button>
         </div>
-
-        <p className="text-gray-500 text-sm font-bold">
-          This is your portfolio, and where you will find which events you
-          requested credits for, their status, information about your request,
-          the event, all in a neat manner and sharable to others
-        </p>
+        <div className="flex justify-center">
+          <p className="text-gray-500 text-sm font-bold md:w-2/3  w-full text-center">
+            
+            This is your portfolio. Here, you&apos;ll find the events you requested credits for, their status, and other information about each event. You will also be able to share the link to your portfolio with others!
+          </p>
+        </div>
       </div>
 
       <div className="flex-col justify-center items-center md:mx-20 lg:mx-72 m-10 p-2 rounded-xl  ">

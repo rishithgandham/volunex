@@ -71,7 +71,7 @@ function MyOpportunities() {
       </div>
       <div className="flex justify-center font-bold text-3xl mb-20">
         <button onClick={() => setCreateOpen(true)} className="hover:scale-110 transition-all ease-in-out shadow w-10 h-10 bg-indigo-600 text-white font-bold  rounded-xl flex items-center justify-center">
-          <ion-icon name="add-outline" size="small"></ion-icon>
+          <ion-icon name="add-outline"></ion-icon>
         </button>
       </div>
 

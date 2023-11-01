@@ -58,18 +58,20 @@ function Page({ auth }: { auth: AuthContextType }) {
         <p className="lg:text-4xl text-2xl font-extrabold">
           Find Volunteering Opportunities
         </p>
-        <p className="text-gray-500 text-sm font-bold">
-          Uncover a plethora of volunteering opportunities by searching our
-          database for events that suit you and your location and time
-          constraints, or{' '}
-          <Link
-            href="/app/opportunities/myopportunities"
-            className="underline italic"
-          >
-            {' '}
-            create an event yourself{' '}
-          </Link>
-        </p>
+        <div className="flex justify-center">
+          <p className="text-gray-500 text-sm font-bold md:w-2/3  w-full">
+            Uncover a vast range of volunteering opportunities by searching our
+            database for events that work for you by you, your location, and
+            time constraints. Or,{' '}
+            <Link
+              href="/app/opportunities/myopportunities"
+              className="underline italic"
+            >
+              {' '}
+              create a volunteer event yourself!{' '}
+            </Link>
+          </p>
+        </div>
       </div>
 
       {/* <div className='  grid grid-cols-6'>
@@ -103,61 +105,61 @@ function Page({ auth }: { auth: AuthContextType }) {
             return;
           }
           return (
-              <div
-                key={e.id}
-                className="group relative border border-black bg-white rounded-xl text-left shadow-xl hover:scale-[102%] transition-all ease-in-out"
-              >
-                <div className="mx-4 my-4 ">
-                  <p className="text-md font-bold mb-2">{event.eventName}</p>
-                  <p className="text-sm font-bold text-slate-600 mb-2 flex items-center">
-                    {event.eventCity + ', ' + event.eventState}
-                  </p>
-                  <p className="text-sm font-bold text-slate-600 mb-2 flex items-center">
-                    {event.eventDescription}
-                  </p>
-                  <p className="text-md font-extrabold mb-2 flex items-center">
-                    Dates:
-                  </p>
-                  <p className="text-xs font-extrabold text-slate-600 mb-2 flex items-center">
-                    Date: {date}
-                  </p>
-                  <p className="text-xs font-extrabold text-slate-600 mb-2 flex items-center">
-                    Start time: {startTime}
-                  </p>
-                  <p className="text-xs font-extrabold text-slate-600 mb-2 flex items-center">
-                    End time: {endTime}
-                  </p>
-                  <p className="text-md font-extrabold mb-2 flex items-center">
-                    Contact Information:
-                  </p>
-                  <p className="text-xs font-extrabold text-slate-600 mb-2 flex items-center">
-                    Phone: {event.contactNumber}
-                  </p>
-                  <p className="text-xs font-extrabold text-slate-600 mb-2 flex items-center">
-                    Email:
-                    <Link href={`mailto:${event.contactEmail}`}>
-                      {" " + event.contactEmail}
-                    </Link>
-                  </p>
+            <div
+              key={e.id}
+              className="group relative border border-black bg-white rounded-xl text-left shadow-xl hover:scale-[102%] transition-all ease-in-out"
+            >
+              <div className="mx-4 my-4 ">
+                <p className="text-md font-bold mb-2">{event.eventName}</p>
+                <p className="text-sm font-bold text-slate-600 mb-2 flex items-center">
+                  {event.eventCity + ', ' + event.eventState}
+                </p>
+                <p className="text-sm font-bold text-slate-600 mb-2 flex items-center">
+                  {event.eventDescription}
+                </p>
+                <p className="text-md font-extrabold mb-2 flex items-center">
+                  Dates:
+                </p>
+                <p className="text-xs font-extrabold text-slate-600 mb-2 flex items-center">
+                  Date: {date}
+                </p>
+                <p className="text-xs font-extrabold text-slate-600 mb-2 flex items-center">
+                  Start time: {startTime}
+                </p>
+                <p className="text-xs font-extrabold text-slate-600 mb-2 flex items-center">
+                  End time: {endTime}
+                </p>
+                <p className="text-md font-extrabold mb-2 flex items-center">
+                  Contact Information:
+                </p>
+                <p className="text-xs font-extrabold text-slate-600 mb-2 flex items-center">
+                  Phone: {event.contactNumber}
+                </p>
+                <p className="text-xs font-extrabold text-slate-600 mb-2 flex items-center">
+                  Email:
+                  <Link href={`mailto:${event.contactEmail}`}>
+                    {' ' + event.contactEmail}
+                  </Link>
+                </p>
 
-                  <p className="text-xs font-extrabold text-slate-600 mb-2 flex items-center">
-                    Adress: {event.eventAdress}
-                  </p>
-                </div>
-
-                <button
-                  onClick={() => {
-                    setCurrentModalOpportunity({
-                      event,
-                      id: e.id,
-                    });
-                    setModalOpen(true);
-                  }}
-                  className="absolute bottom-1.5 right-3 p-2 m-2 bg-indigo-500 rounded-xl text-white text-xs font-semibold hover:scale-110 transition-all ease-in-out"
-                >
-                  Add +
-                </button>
+                <p className="text-xs font-extrabold text-slate-600 mb-2 flex items-center">
+                  Adress: {event.eventAdress}
+                </p>
               </div>
+
+              <button
+                onClick={() => {
+                  setCurrentModalOpportunity({
+                    event,
+                    id: e.id,
+                  });
+                  setModalOpen(true);
+                }}
+                className="absolute bottom-1.5 right-3 p-2 m-2 bg-indigo-500 rounded-xl text-white text-xs font-semibold hover:scale-110 transition-all ease-in-out"
+              >
+                Add +
+              </button>
+            </div>
           );
         })}
 
